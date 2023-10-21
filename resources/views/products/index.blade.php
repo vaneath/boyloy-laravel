@@ -4,4 +4,6 @@
             Create
         </a>
     </div>
+
+    {{ $products }}
 </x-app-layout>

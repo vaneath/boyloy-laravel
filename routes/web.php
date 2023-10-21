@@ -39,7 +39,7 @@ Route::group(['prefix' => 'products'], function () {
     Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // index
 // show 
