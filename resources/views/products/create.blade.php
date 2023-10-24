@@ -9,25 +9,21 @@
 
             <div class="mt-4">
                 <x-input-label for="price" value="Price" />
-
                 <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" required />
             </div>
 
             <div class="mt-4">
                 <x-input-label for="description" value="Description" />
-
                 <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" required />
             </div>
 
             <div class="mt-4">
                 <x-input-label for="quantity" value="Quantity" />
-
                 <x-text-input id="quantity" class="block mt-1 w-full" type="text" name="quantity" required />
             </div>
 
             <div class="mt-4">
                 <x-input-label for="image" value="Image" />
-
                 <x-text-input id="image" class="block mt-1 w-full" type="text" name="image" />
             </div>
 

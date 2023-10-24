@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -52,7 +51,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', [
+            'product' => $product,
+        ]);
     }
 
     /**
@@ -66,9 +67,14 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product = Product::where('id', $request->id)->first();
+
+        $product->update([
+            'name' => request()->name ?? $product->name,
+
+        ]);
     }
 
     /**

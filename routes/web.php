@@ -32,11 +32,12 @@ Route::middleware('auth')->group(function () {
 //group route for product
 Route::group(['prefix' => 'products'], function () {
     Route::get('/', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/{product}', [ProductController::class, 'show'])->name('products.show');
     Route::get('/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/store', [ProductController::class, 'store'])->name('products.store');
-    Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
-    Route::post('/update/{id}', [ProductController::class, 'update'])->name('products.update');
-    Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
+    Route::post('/update/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::get('/delete/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
 
 require __DIR__ . '/auth.php';
