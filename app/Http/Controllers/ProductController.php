@@ -61,7 +61,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.edit', [
+            'product' => $product,
+        ]);
     }
 
     /**
@@ -69,12 +71,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product = Product::where('id', $request->id)->first();
-
         $product->update([
-            'name' => request()->name ?? $product->name,
-
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'image' => $request->image,
         ]);
+
+        return redirect()->route('products.show', $product);
     }
 
     /**
@@ -82,6 +87,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('products.index');
     }
 }

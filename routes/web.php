@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,16 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//group route for product
-Route::group(['prefix' => 'products'], function () {
-    Route::get('/', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/{product}', [ProductController::class, 'show'])->name('products.show');
-    Route::get('/create', [ProductController::class, 'create'])->name('products.create');
-    Route::post('/store', [ProductController::class, 'store'])->name('products.store');
-    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
-    Route::post('/update/{product}', [ProductController::class, 'update'])->name('products.update');
-    Route::get('/delete/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
-});
+Route::resource('products', ProductController::class);
 
 require __DIR__ . '/auth.php';
 
