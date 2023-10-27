@@ -19,17 +19,19 @@
                     <h2 class=" font-semibold">Quantity:</h2>
                     <p>{{ $product->quantity }} left(s)</p>
                 </div>
-                <div class="flex justify-end mr-10">
-                    <a href="{{ route('products.edit', $product->id) }}"
-                        class="px-6 py-2 bg-gray-700 text-white rounded-md">Edit</a>
-                    <form method="POST" action="{{ route('products.destroy', $product->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <x-primary-button class="ml-3 bg-red-500">
-                            Delete
-                        </x-primary-button>
-                    </form>
-                </div>
+                @can('admin')
+                    <div class="flex justify-end mr-10">
+                        <a href="{{ route('products.edit', $product->id) }}"
+                            class="px-6 py-2 bg-gray-700 text-white rounded-md">Edit</a>
+                        <form method="POST" action="{{ route('products.destroy', $product->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-primary-button class="ml-3 bg-red-500">
+                                Delete
+                            </x-primary-button>
+                        </form>
+                    </div>
+                @endcan
             </div>
         </div>
     </div>
